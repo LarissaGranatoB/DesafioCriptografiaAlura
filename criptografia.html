@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <title>Criptografia</title>
+    
+    <style>
+      
+      h1 {
+        color: white;
+      }
+
+      h2 {
+        background-color: black;
+        color: white;
+        padding: 5px;
+        max-width: 400px;
+      }
+
+      footer {
+        color: white;
+        font-style: italic;
+      }
+
+      body {
+        background-image: url(criptografia.jpg);
+        background-repeat: no-repeat;
+        background-position: left;
+        background-size: 1000px;
+      }
+
+
+      #resultado1, #resultado2 {
+        background-color: white;
+        padding: 10px;
+        max-width: 300px;
+      }
+
+    </style>
+    
+  </head>
+
+  <body>
+    
+    <h1>Dicionário criptografado</h1>
+    <br>
+    <h2>Escreva aqui o que deseja encriptar:</h2>
+    <input id="entrada1">
+    <button id="botao1">Clique aqui para criptografar</button>
+    <p id="resultado1"></p>
+    <button id="copiar1">Copiar</button>
+    <br><br><br>
+    <h2>Escreva aqui o que deseja descriptar:</h2>
+    <input id="entrada2">
+    <button id="botao2">Clique aqui para descriptografar</button>
+    <p id="resultado2"></p>
+    <button id="copiar2">Copiar</button>
+
+    <script>
+      
+    function criptografar(palavra) {
+      palavra = palavra.replace(/e/g, "enter");
+      palavra = palavra.replace(/i/g, "imes");
+      palavra = palavra.replace(/a/g, "ai");
+      palavra = palavra.replace(/o/g, "ober");
+      palavra = palavra.replace(/u/g, "ufat");
+      return palavra;
+    }
+
+    function descriptografar(palavraOculta) {
+      palavraOculta = palavraOculta.replace(/enter/g, "e");
+      palavraOculta = palavraOculta.replace(/imes/g, "i");
+      palavraOculta = palavraOculta.replace(/ai/g, "a");
+      palavraOculta = palavraOculta.replace(/ober/g, "o");
+      palavraOculta = palavraOculta.replace(/ufat/g, "u");
+      return palavraOculta;
+    }
+
+    var palavra = document.querySelector("#entrada1");
+    var botaoDeCriptografar = document.querySelector("#botao1");
+    var resultado1 = document.querySelector("#resultado1");
+    var botaoDeCopiar1 = document.querySelector("#copiar1");
+
+    botaoDeCriptografar.addEventListener("click", function() {
+      if (palavra.value == "") {
+        resultado1.textContent = "Erro: campo de entrada vazio";
+      } else {
+        var palavraCriptografada = criptografar(palavra.value);
+        resultado1.textContent = palavraCriptografada;
+      }
+    });
+
+    botaoDeCopiar1.addEventListener("click", function() {
+      var resultado = document.querySelector("#resultado1");
+      navigator.clipboard.writeText(resultado.textContent);
+    });
+
+    var palavraOculta = document.querySelector("#entrada2");
+    var botaoDeDescriptografar = document.querySelector("#botao2");
+    var resultado2 = document.querySelector("#resultado2");
+    var botaoDeCopiar2 = document.querySelector("#copiar2");
+
+    botaoDeDescriptografar.addEventListener("click", function() {
+      if (palavraOculta.value == "") {
+        resultado2.textContent = "Erro: campo de entrada vazio";
+      } else {
+        var palavraDescriptografada = descriptografar(palavraOculta.value);
+        resultado2.textContent = palavraDescriptografada;
+      }
+    });
+
+    botaoDeCopiar2.addEventListener("click", function() {
+      var resultado = document.querySelector("#resultado2");
+      navigator.clipboard.writeText(resultado.textContent);
+    });
+
+    </script>
+
+  </body>
+
+  <footer>
+    <br><br><br>
+    <p>Desenvolvido por Larissa Granato</p>
+  </footer>
+
+</html>
